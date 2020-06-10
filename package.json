@@ -1,9 +1,9 @@
 {
-  "name": "y",
-  "description": "y",
+  "name": "vue-quiz-app",
+  "description": "A simple quiz app with vue.js",
   "version": "1.0.0",
-  "author": "y",
-  "license": "y",
+  "author": "ebenezeranane(awedev)",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
