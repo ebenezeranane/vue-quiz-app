@@ -82,6 +82,10 @@ ul li {
     cursor: pointer;
 }
 
+ul li:hover {
+    background-color: #e7eae0;
+}
+
 .box-button {
     display: flex;
     width: 100%;
