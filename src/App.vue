@@ -19,7 +19,12 @@
 </div>
     </div>
 <div class="score-box"></div>
-    <div class="quiz-footer"></div>
+    <div class="quiz-footer">
+      <div class="box-button">
+        <button>skip</button>
+        <button>next</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -83,7 +88,7 @@ export default {
 
            {
              question:"whats the full meaning of PHP",
-        
+
           suggestions:[
             {suggestion:"Processor Hyperactive Program"},
             {suggestion:"Hypertext Preprocessor"},

@@ -81,3 +81,21 @@ ul li {
     border-radius: 15px;
     cursor: pointer;
 }
+
+.box-button {
+    display: flex;
+    width: 100%;
+}
+
+.box-button button {
+    width: 150px;
+    height: 35px;
+    outline: none;
+    border: 0;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: auto;
+    background-color: #a09f9ff5;
+}
