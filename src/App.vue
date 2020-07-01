@@ -5,7 +5,7 @@
     <div class="quiz-header">
 <h1 class="mt-5">Quiz App</h1>
     </div>
-    <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index">
+    <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index" v-show="quiz">
 <div class="question-box">
 <h2>Question {{b}} / {{questions.length}}</h2><br>
 <p>{{element.question}}</p>
@@ -14,15 +14,21 @@
 <div class="suggestion-box">
 <ul>
 
-  <li v-for="(item, index) in element.suggestions" :key="index" :class="select ? check(item):''" @click="selectResponse">{{item.suggestion}}</li>
+  <li v-for="(item, index) in element.suggestions" :key="index" :class="select ? check(item):''" @click="selectResponse(item)">{{item.suggestion}}</li>
 </ul>
 </div>
     </div>
-<div class="score-box"></div>
+<div v-if="score_show" class="score-box">
+<h2>Your score is </h2>
+<h2>{{score}} / {{questions.length}}</h2>
+  <div class="btn-restart"> 
+  <button @click="restartQuiz"> Restart <i class="fas fa-sync-alt"></i></button>
+  </div>
+    </div>
     <div class="quiz-footer">
       <div class="box-button">
-        <button>skip</button>
-        <button>next</button>
+        <button @click="skipQuestion"> Skip</button>
+        <button @click="nextQuestion">Next</button>
       </div>
     </div>
   </div>
@@ -101,12 +107,20 @@ export default {
       a:0,
       b:1,
       select : false,
+      score : 0,
+      quiz : true,
+      score_show :false,
 
     }
   },
   methods: {
-    selectResponse(){
+    selectResponse(e){
       this.select = true;
+
+      if (e.correct) {
+        this.score++;
+        
+      }
     },
 
     check(status){
@@ -115,8 +129,32 @@ export default {
       }else{
         return 'incorrect'
       }
-    }
-  },
+    },
+    nextQuestion(){
+      if (this.questions.length- 1 == this.a) {
+       this.score_show = true;
+       this.quiz = false; 
+      } else {
+      this.a++;
+      this.b++;
+      this.select = false;
+      }
+      
+    },
+     skipQuestion(){
+      if (this.questions.length- 1 == this.a) {
+       this.score_show = true;
+       this.quiz = false; 
+      } else {
+      this.a++;
+      this.b++;
+      }  
+    },
+    restartQuiz(){
+    Object.assign(this.$data,this.$options.data());
+  }
+  }
+  
 }
 </script>
 

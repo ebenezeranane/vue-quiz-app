@@ -34,6 +34,7 @@
     border-bottom: 1px solid #e7eae0;
     background-color: #e7eae0;
     border-radius: 10px 10px 0 0;
+    padding-top: 20px;
 }
 
 .quiz-main {
@@ -117,4 +118,36 @@ li.incorrect{
     background-color: rgb(240, 117,100);
     color: white;
     font-weight: 600;
+}
+
+.score-box{
+    display:flex;
+    width: 100%;
+    height: 70%;
+    flex-flow:column;
+}
+
+.score-box h2 {
+    margin-top: 40px;
+}
+
+.btn-restart {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.btn-restart button{
+    width: 150px;
+    height: 35px;
+    outline: none;
+    border: 0;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    margin: auto;
+    background-color:blue;
 }
