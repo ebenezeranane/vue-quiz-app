@@ -3,18 +3,18 @@
 <div class="app-container">
   <div class="quiz-container">
     <div class="quiz-header">
-<h1>Quiz App</h1>
+<h1 class="mt-5">Quiz App</h1>
     </div>
     <div class="quiz-main" v-for="(element, index) in questions.slice(a,b)" :key="index">
 <div class="question-box">
-<h4>Question</h4>
+<h2>Question {{b}} / {{questions.length}}</h2><br>
 <p>{{element.question}}</p>
 </div>
 
 <div class="suggestion-box">
 <ul>
 
-  <li v-for="(item, index) in element.suggestions" :key="index">{{item.suggestion}}</li>
+  <li v-for="(item, index) in element.suggestions" :key="index" :class="select ? check(item):''" @click="selectResponse">{{item.suggestion}}</li>
 </ul>
 </div>
     </div>
@@ -40,7 +40,7 @@ export default {
         { question: 'whats the full meaning of HTML',
 
           suggestions : [
-            {suggestion:"Hypertext Markup Language"},
+            {suggestion:"Hypertext Markup Language" ,correct :true},
             {suggestion:"Hyphenated Markup Language"},
             {suggestion:"Hypertext Markdown Language"},
             {suggestion:"Hyphenated Markdown Language"},
@@ -52,7 +52,7 @@ export default {
 
           suggestions:[
             {suggestion:"Extended Markup Language"},
-            {suggestion:"Extensible  Markup Language"},
+            {suggestion:"Extensible  Markup Language", correct:true},
             {suggestion:"Extended Markdown Language"},
             {suggestion:"Extensible Markdown Language"},
 
@@ -64,7 +64,7 @@ export default {
 
 
           suggestions:[
-            {suggestion:"World Wide Web"},
+            {suggestion:"World Wide Web", correct:true},
             {suggestion:"World Web Wide"},
             {suggestion:"Word Wide Web"},
             {suggestion:"Word Web Wide"},
@@ -78,7 +78,7 @@ export default {
 
           suggestions:[
             {suggestion:"Processor Hyperactive Program"},
-            {suggestion:"Hypertext Preprocessor"},
+            {suggestion:"Hypertext Preprocessor", correct:true},
             {suggestion:"Preprocessor Hyperactive Programming"},
             {suggestion:"Programmable Hypertext Program"},
 
@@ -91,7 +91,7 @@ export default {
 
           suggestions:[
             {suggestion:"Processor Hyperactive Program"},
-            {suggestion:"Hypertext Preprocessor"},
+            {suggestion:"Hypertext Preprocessor", correct:true},
             {suggestion:"Preprocessor Hyperactive Programming"},
             {suggestion:"Programmable Hypertext Program"},
 
@@ -100,9 +100,23 @@ export default {
       ],
       a:0,
       b:1,
+      select : false,
 
     }
-  }
+  },
+  methods: {
+    selectResponse(){
+      this.select = true;
+    },
+
+    check(status){
+      if (status.correct) {
+        return 'correct'       
+      }else{
+        return 'incorrect'
+      }
+    }
+  },
 }
 </script>
 
